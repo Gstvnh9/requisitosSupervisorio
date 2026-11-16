@@ -1,17 +1,213 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        Scanner entrada = new Scanner(System.in);
+
+        int opcoes = 0;
+        int escolhaRampa = 0;
+        int statusPrograma = 1;
+        int statusComunicacao = 1;
+        int pecasProcecadas = 0;
+        int pecasAdicionadas = 0;
+
+        String numeroEscolha = "";
+        String escolhaPrograma = "";
+        String escolhaComunicacao = "";
+        String escolhaPecas = "";
+
+        do {
+
+            System.out.println("");
+            System.out.println("==== Menu Principal ====");
+            System.out.println("1 - BOTÃO DE EMERGÊNCIA");
+            System.out.println("2 - Status do Robô");
+            System.out.println("3 - Status do Programa");
+            System.out.println("4 - Status da Comunicação");
+            System.out.println("5 - Contagem de Peças");
+            System.out.println("========================");
+
+            System.out.println("");
+            System.out.println("Escolha uma das opções:");
+            opcoes = entrada.nextInt();
+
+
+            if (opcoes == 1) {
+
+                String escolha = "";
+
+                System.out.println("");
+                System.out.println("Você realmente deseja fazer uma 'PARADA EMERGENCIAL'?");
+                System.out.println("Responda apenas com 'S' ou 'N':");
+
+                entrada.nextLine();
+                escolha = entrada.nextLine();
+
+                if (escolha.equalsIgnoreCase("S")) {
+
+                    System.out.println("");
+                    System.out.println("Realizando Parada de Emergência!");
+
+                } else if (escolha.equalsIgnoreCase("N")) {
+
+                    opcoes = 0;
+
+                }
+
+            } else if (opcoes == 2) {
+
+                //Status imaginário do robô, visto que ainda não temos integração em tempo real com o projeto
+
+                System.out.println("");
+                if (escolhaRampa == 0) {
+
+                    System.out.println("Estado Atual de Operação do Robô: Em repouso");
+
+                } else {
+
+                    System.out.println("Estado Atual de Operação do Robô: Rampa " + escolhaRampa + " em execução");
+
+                }
+
+                System.out.println("");
+                System.out.println("Você deseja alterar o número da rampa?");
+                System.out.println("Responda apenas com 'S' ou 'N':");
+
+                entrada.nextLine();
+                numeroEscolha = entrada.nextLine();
+
+                if (numeroEscolha.equalsIgnoreCase ("S")) {
+
+                    System.out.println("");
+                    System.out.println("Digite o número da rampa desejada:");
+                    escolhaRampa = entrada.nextInt();
+
+                    System.out.println("Rampa Atualizada!");
+
+                }
+
+            } else if (opcoes == 3) {
+
+               if (statusPrograma == 1) {
+
+                   System.out.println("");
+                   System.out.println("O programa de controle se encontra habilitado!");
+                   System.out.println("");
+
+                   System.out.println("Você deseja desabilitá-lo?");
+                   System.out.println("Responda apenas com 'S' ou 'N':");
+
+                   entrada.nextLine();
+                   escolhaPrograma = entrada.nextLine();
+
+                   if (escolhaPrograma.equalsIgnoreCase("S")) {
+
+                       statusPrograma = 0;
+                       System.out.println("O programa será Desabilitado!");
+
+                   }
+
+               } else if (statusPrograma == 0) {
+
+                   System.out.println("O programa de controle se encontra Desabilitado!");
+                   System.out.println("");
+
+                   System.out.println("Você deseja habilitá-lo?");
+                   System.out.println("Responda apenas com 'S' ou 'N':");
+
+                   entrada.nextLine();
+                   escolhaPrograma = entrada.nextLine();
+
+                   if (escolhaPrograma.equalsIgnoreCase("S")) {
+
+                       statusPrograma = 1;
+                       System.out.println("O programa será Habilitado!");
+
+                   }
+
+               }
+
+            } else if (opcoes == 4) {
+
+                if (statusComunicacao == 1) {
+
+                    System.out.println("");
+                    System.out.println("Sistema Online");
+                    System.out.println("");
+
+                    System.out.println("Deseja desconectá-lo?");
+                    System.out.println("Responda apenas com 'S' ou 'N':");
+
+                    entrada.nextLine();
+                    escolhaComunicacao = entrada.nextLine();
+
+                    if (escolhaComunicacao.equalsIgnoreCase("S")) {
+
+                        statusComunicacao = 0;
+                        System.out.println("Sistema Desconectado!");
+
+                    }
+
+                } else if (statusComunicacao == 0) {
+
+                    System.out.println("");
+                    System.out.println("Sistema Offline");
+                    System.out.println("");
+
+                    System.out.println("Deseja Conectá-lo?");
+                    System.out.println("Responda apenas com 'S' ou 'N':");
+
+                    entrada.nextLine();
+                    escolhaComunicacao = entrada.nextLine();
+
+                    if (escolhaComunicacao.equalsIgnoreCase("S")) {
+
+                        statusComunicacao = 1;
+                        System.out.println("Sistema Conectado!");
+
+                    }
+
+                }
+
+            } else if (opcoes == 5) {
+
+                System.out.println("");
+                System.out.println("Peças Processadas: " + pecasProcecadas);
+                System.out.println("");
+
+                System.out.println("Você deseja adicionar mais peças?");
+                System.out.println("Responda apenas com 'S' ou 'N':");
+
+                entrada.nextLine();
+                escolhaPecas = entrada.nextLine();
+
+                if (escolhaPecas.equalsIgnoreCase("S")) {
+
+                    System.out.println("");
+                    System.out.println("Quantas peças serão adicionadas?");
+                    pecasAdicionadas = entrada.nextInt();
+
+                    while (pecasAdicionadas == 0) {
+
+                        System.out.println("");
+                        System.out.println("Por favor, adicione um valor acima de 0:");
+                        pecasAdicionadas = entrada.nextInt();
+
+                    }
+
+                    pecasProcecadas += pecasAdicionadas;
+                    System.out.println("");
+                    System.out.println("Peças processadas com sucesso!");
+
+                }
+
+            }
+
+        } while (opcoes != 1);
+
     }
+
 }
