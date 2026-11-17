@@ -9,18 +9,24 @@ public class Main {
 
         int opcoes = 0;
         int escolhaRampa = 0;
-        int statusPrograma = 1;
-        int statusComunicacao = 1;
+        int statusPrograma = 0;
+        int statusComunicacao = 0;
         int pecasProcecadas = 0;
         int pecasAdicionadas = 0;
         int tempoTotal = 0;
+        int statusProcessamento = 0;
 
         String numeroEscolha = "";
         String escolhaPrograma = "";
         String escolhaComunicacao = "";
         String escolhaPecas = "";
+        String escolhaProcessamento = "";
 
-        double tempoCiclo;
+        double tempoCiclo = 0;
+        double percentual = 1;
+        double disponibilidade = 0;
+        double desempenho = 0;
+        double qualidade = 0;
 
         do {
 
@@ -32,6 +38,10 @@ public class Main {
             System.out.println("4 - Status da Comunicação");
             System.out.println("5 - Contagem de Peças");
             System.out.println("6 - Tempo de Ciclo");
+            System.out.println("7 - Indicador de Taxa de Acerto");
+            System.out.println("8 - Indicador de Gravação de Vídeo");
+            System.out.println("9 - Registro de Logs em Tempo Real");
+            System.out.println("10 - Monitoramento de Eficiência");
             System.out.println("========================");
 
             System.out.println("");
@@ -257,6 +267,169 @@ public class Main {
                     entrada.nextLine();
 
                 }
+
+            } else if (opcoes == 7) {
+
+                if (pecasProcecadas == 0) {
+
+                    System.out.println("");
+                    System.out.println("Para verificar o percentual de acertos do processo, é necessário processar peças através da opção '5' no Menu Principal");
+                    System.out.println("Pressione Enter para voltar ao menu...");
+                    entrada.nextLine();
+                    entrada.nextLine();
+
+                } else if (pecasProcecadas > 0) {
+
+                    if (pecasProcecadas >= 1 & pecasProcecadas <= 100 ) {
+
+                        percentual = 100;
+
+                    } else if (pecasProcecadas > 100 & pecasProcecadas <= 200) {
+
+                        percentual = 98.5;
+
+                    } else if (pecasProcecadas > 200 & pecasProcecadas <= 300) {
+
+                        percentual = 95;
+
+                    } else if (pecasProcecadas > 300) {
+
+                        percentual = 91.7;
+
+                    }
+
+                    System.out.println("");
+                    System.out.println("A partir de " + pecasProcecadas + " peças processadas, houve um percentual de " + percentual + "% de acerto no processo de separação por cor");
+                    System.out.println("Pressione Enter para voltar ao menu...");
+                    entrada.nextLine();
+                    entrada.nextLine();
+
+                }
+
+            } else if (opcoes == 8) {
+
+                if (statusProcessamento == 1) {
+
+                    System.out.println("");
+                    System.out.println("Atualmente o sistema de visão computacional encontra-se em andamento");
+                    System.out.println("");
+
+                    System.out.println("Você gostaria de interromper o processo?");
+                    System.out.println("Responda apenas com 'S' ou 'N':");
+
+                    entrada.nextLine();
+                    escolhaProcessamento = entrada.nextLine();
+
+                    if (escolhaProcessamento.equalsIgnoreCase("S")) {
+
+                        System.out.println("");
+                        statusProcessamento = 0;
+                        System.out.println("A visão computacional será interrompida");
+                        System.out.println("Pressione Enter para voltar ao menu...");
+                        entrada.nextLine();
+
+                    }
+
+                } else if (statusProcessamento == 0) {
+
+                    System.out.println("");
+                    System.out.println("Atualmente o sistema de visão computacional encontra-se interrompido");
+                    System.out.println("");
+
+                    System.out.println("Você gostaria de iniciar o processo?");
+                    System.out.println("Responda apenas com 'S' ou 'N':");
+
+                    entrada.nextLine();
+                    escolhaProcessamento = entrada.nextLine();
+
+                    if (escolhaProcessamento.equalsIgnoreCase("S")) {
+
+                        System.out.println("");
+                        statusProcessamento = 1;
+                        System.out.println("A visão computacional será iniciada");
+                        System.out.println("Pressione Enter para voltar ao menu...");
+                        entrada.nextLine();
+
+                    }
+
+                }
+
+            } else if (opcoes == 9) {
+
+                System.out.println("================================================================== LOGS DO ROBÔ ==================================================================");
+
+                if (escolhaRampa == 0) {
+
+                    System.out.println("- Estado Atual de Operação do Robô: Em repouso");
+
+                } else {
+
+                    System.out.println("- Estado Atual de Operação do Robô: Rampa " + escolhaRampa + " em execução");
+
+                }
+
+                if (statusPrograma == 1) {
+
+                    System.out.println("- O programa de controle se encontra habilitado!");
+
+                } else if (statusPrograma == 0) {
+
+                    System.out.println("- O programa de controle se encontra Desabilitado!");
+
+                }
+
+                if (statusComunicacao == 1) {
+
+                    System.out.println("- Sistema Online");
+
+                } else if (statusComunicacao == 0) {
+
+                    System.out.println("- Sistema Offline");
+
+                }
+
+                System.out.println("- Peças Processadas: " + pecasProcecadas);
+
+                if (pecasProcecadas == 0) {
+
+                    System.out.println("- Para verificar o tempo de ciclo por peça, é necessário adicionar peças através da opção '5' no Menu Principal");
+
+                } else if (pecasProcecadas > 0) {
+
+                    System.out.println("- O tempo de ciclo é de " + tempoCiclo + " segundo(s) por peça.");
+
+                }
+
+                if (pecasProcecadas == 0) {
+
+                    System.out.println("- Para verificar o percentual de acertos do processo, é necessário processar peças através da opção '5' no Menu Principal");
+
+                } else if (pecasProcecadas > 0) {
+
+                    System.out.println("- A partir de " + pecasProcecadas + " peças processadas, houve um percentual de " + percentual + "% de acerto no processo de separação por cor");
+
+                }
+
+                if (statusProcessamento == 1) {
+
+                    System.out.println("- Atualmente o sistema de visão computacional encontra-se em andamento");
+
+                } else if (statusProcessamento == 0) {
+
+                    System.out.println("- Atualmente o sistema de visão computacional encontra-se interrompido");
+
+                }
+
+                System.out.println("===================================================================================================================================================");
+
+                System.out.println("");
+                System.out.println("Pressione Enter para voltar ao menu...");
+                entrada.nextLine();
+                entrada.nextLine();
+
+            } else if (opcoes == 10) {
+
+                disponibilidade = tempoTotal / (tempoTotal * 1.5) * 100;
 
             }
 
