@@ -13,11 +13,14 @@ public class Main {
         int statusComunicacao = 1;
         int pecasProcecadas = 0;
         int pecasAdicionadas = 0;
+        int tempoTotal = 0;
 
         String numeroEscolha = "";
         String escolhaPrograma = "";
         String escolhaComunicacao = "";
         String escolhaPecas = "";
+
+        double tempoCiclo;
 
         do {
 
@@ -28,6 +31,7 @@ public class Main {
             System.out.println("3 - Status do Programa");
             System.out.println("4 - Status da Comunicação");
             System.out.println("5 - Contagem de Peças");
+            System.out.println("6 - Tempo de Ciclo");
             System.out.println("========================");
 
             System.out.println("");
@@ -85,7 +89,11 @@ public class Main {
                     System.out.println("Digite o número da rampa desejada:");
                     escolhaRampa = entrada.nextInt();
 
+                    System.out.println("");
                     System.out.println("Rampa Atualizada!");
+                    System.out.println("Pressione Enter para voltar ao menu...");
+                    entrada.nextLine();
+                    entrada.nextLine();
 
                 }
 
@@ -106,12 +114,17 @@ public class Main {
                    if (escolhaPrograma.equalsIgnoreCase("S")) {
 
                        statusPrograma = 0;
+
+                       System.out.println("");
                        System.out.println("O programa será Desabilitado!");
+                       System.out.println("Pressione Enter para voltar ao menu...");
+                       entrada.nextLine();
 
                    }
 
                } else if (statusPrograma == 0) {
 
+                   System.out.println("");
                    System.out.println("O programa de controle se encontra Desabilitado!");
                    System.out.println("");
 
@@ -124,7 +137,11 @@ public class Main {
                    if (escolhaPrograma.equalsIgnoreCase("S")) {
 
                        statusPrograma = 1;
+
+                       System.out.println("");
                        System.out.println("O programa será Habilitado!");
+                       System.out.println("Pressione Enter para voltar ao menu...");
+                       entrada.nextLine();
 
                    }
 
@@ -147,7 +164,11 @@ public class Main {
                     if (escolhaComunicacao.equalsIgnoreCase("S")) {
 
                         statusComunicacao = 0;
+
+                        System.out.println("");
                         System.out.println("Sistema Desconectado!");
+                        System.out.println("Pressione Enter para voltar ao menu...");
+                        entrada.nextLine();
 
                     }
 
@@ -166,7 +187,11 @@ public class Main {
                     if (escolhaComunicacao.equalsIgnoreCase("S")) {
 
                         statusComunicacao = 1;
+
+                        System.out.println("");
                         System.out.println("Sistema Conectado!");
+                        System.out.println("Pressione Enter para voltar ao menu...");
+                        entrada.nextLine();
 
                     }
 
@@ -201,6 +226,35 @@ public class Main {
                     pecasProcecadas += pecasAdicionadas;
                     System.out.println("");
                     System.out.println("Peças processadas com sucesso!");
+                    System.out.println("Pressione Enter para voltar ao menu...");
+                    entrada.nextLine();
+                    entrada.nextLine();
+
+                }
+
+            } else if (opcoes == 6) {
+
+                if (pecasProcecadas == 0) {
+
+                    System.out.println("");
+                    System.out.println("Para verificar o tempo de ciclo por peça, é necessário adicionar peças através da opção '5' no Menu Principal");
+                    System.out.println("Pressione Enter para voltar ao menu...");
+                    entrada.nextLine();
+                    entrada.nextLine();
+
+                } else if (pecasProcecadas > 0) {
+
+                    System.out.println("");
+                    System.out.println("Qual foi o tempo total, em segundos, da operação?");
+                    tempoTotal = entrada.nextInt();
+
+                    tempoCiclo = tempoTotal / pecasProcecadas;
+
+                    System.out.println("");
+                    System.out.println("O tempo de ciclo é de " + tempoCiclo + " segundo(s) por peça.");
+                    System.out.println("Pressione Enter para voltar ao menu...");
+                    entrada.nextLine();
+                    entrada.nextLine();
 
                 }
 
